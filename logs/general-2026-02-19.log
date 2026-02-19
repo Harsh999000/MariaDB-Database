@@ -537,3 +537,5 @@ Time		    Id Command	Argument
 		     6 Query	SHOW FULL TABLES
 		     6 Query	UNLOCK TABLES
 		     6 Quit	
+260220  0:15:12	     7 Connect	root@localhost on  using Socket
+		     7 Query	FLUSH LOGS
