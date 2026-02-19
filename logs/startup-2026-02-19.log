@@ -1,0 +1,2 @@
+260219 22:25:20 mysqld_safe Logging to '/db1/myserver/mariadb/logs/error.log'.
+260219 22:25:20 mysqld_safe Starting mariadbd daemon with databases from /db1/myserver/mariadb/data
