@@ -1,66 +1,103 @@
-# MariaDB Database Server – Manual Linux Setup
+# MariaDB Server Architecture
 
-This project documents a manually configured MariaDB server running on Debian Linux with a structured automation and logging lifecycle.
+This document describes the automated operational lifecycle of the MariaDB server instance running on the server laptop.
 
-The system is built as a learning-focused infrastructure project with production-style discipline.
-
----
-
-## Overview
-
-This server includes:
-
-- Dedicated MariaDB instance (port 3306)
-- Manual service control scripts (start / stop / status)
-- Automated backup process
-- Deterministic log rotation
-- Log sanitization
-- Retention-based log cleanup
-- Controlled GitHub archival of logs
-- Cron-based execution pipeline
-
-Logs from other internal projects can be stored and version-controlled here for structured long-term archival.
+The system is designed for deterministic daily execution, script-managed log rotation, and clean separation of responsibilities between the database engine and automation scripts.
 
 ---
 
-## Daily Automation Flow
+## Daily Automation Schedule
 
-12:01 A.M – Backup MariaDB database  
-12:02 A.M – Rotate logs  
-12:03 A.M – Flush logs  
-12:04 A.M – Sanitize logs  
-12:05 A.M – Delete old logs (retention policy)  
-12:06 A.M – Auto-push logs to GitHub  
+All operations are executed sequentially starting at 12:01 A.M.
+
+MariaDB does not perform automatic date-based log rotation in this setup. Log rotation is handled explicitly by lifecycle scripts to ensure full control over archival, sanitization, retention, and Git synchronization.
 
 ---
 
-## Design Principles
+### 12:01 A.M – Backup Database  
+Script: backup-mariadb.sh  
 
-- Full isolation from MySQL instance
-- Dedicated port, socket, PID file, and data directory
-- PID-file-based process management (no `pgrep` collisions)
-- Append-only GitHub log archival
-- Logs ignored by default via `.gitignore`
-- Explicit forced-add for controlled log uploads
-- Clear separation between runtime server directory and Git-controlled directory
-- Deterministic execution order for daily operations
+Purpose:  
+Creates a full logical backup of all MariaDB databases before any log manipulation occurs.  
+Ensures data safety and recovery capability prior to lifecycle maintenance operations.
 
 ---
 
-## Environment
+### 12:02 A.M – Rotate Logs  
+Script: rotate-logs-mariadb.sh  
 
-- Debian Linux
-- Manual MariaDB installation (no systemd dependency)
-- Cron-based automation
-- Local development laptop + server laptop architecture
+Purpose:  
+Renames active log files (`error.log`, `general.log`, `slow.log`) to a date-based format:
+
+- error-YYYY-MM-DD.log  
+- general-YYYY-MM-DD.log  
+- slow-YYYY-MM-DD.log  
+
+Creates fresh active log files after rotation.  
+Copies rotated logs to the GitHub archival directory.
 
 ---
 
-## Purpose
+### 12:03 A.M – Flush Logs  
+Script: flush-logs-mariadb.sh  
 
-This repository serves as:
+Purpose:  
+Forces MariaDB to reopen log file descriptors after rotation.  
+Prevents ghost file descriptor issues and ensures logging continuity.
 
-- A learning infrastructure project
-- A structured MariaDB server implementation
-- A logging and automation architecture reference
-- A foundation for future production-style hardening
+---
+
+### 12:04 A.M – Sanitize Logs  
+Script: sanitize-logs-mariadb.sh  
+
+Purpose:  
+Cleans rotated logs before archival.  
+Removes sensitive or unnecessary entries while preserving diagnostic value.
+
+---
+
+### 12:05 A.M – Delete Old Logs  
+Script: delete-logs-mariadb.sh  
+
+Purpose:  
+Applies retention policies:
+
+- GitHub logs → 7 days  
+- Local MariaDB logs → 14 days  
+- Cron logs → 14 days  
+
+Ensures disk space stability and controlled archival lifecycle.
+
+---
+
+### 12:06 A.M – Auto Push Logs  
+Script: auto-push-logs-mariadb.sh  
+
+Purpose:  
+Force-adds sanitized rotated logs to the Git repository.  
+Commits and pushes logs to GitHub for version-controlled archival.
+
+---
+
+## Execution Characteristics
+
+- Single orchestrator script: `run-mariadb-lifecycle.sh`
+- Sequential execution (halts on failure)
+- Runs under user `harsh`
+- No systemd dependency
+- Fully isolated from MySQL installation
+- Deterministic, time-driven operational model
+
+---
+
+## Design Philosophy
+
+The MariaDB lifecycle is intentionally:
+
+- Deterministic  
+- Script-controlled  
+- Log-centric  
+- Isolated from other database engines  
+- Designed for observability and auditability  
+
+This architecture provides a controlled foundation for future enhancements such as replication, remote backups, monitoring integration, and production-grade hardening.
