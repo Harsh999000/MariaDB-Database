@@ -1,0 +1,486 @@
+/db1/myserver/mariadb/mariadb_files/bin/mariadbd, Version: 10.11.14-MariaDB-log (MariaDB Server). started with:
+Tcp port: 3306  Unix socket: /db1/myserver/mariadb/run/mysql.sock
+Time		    Id Command	Argument
+		     9 Quit	
+/db1/myserver/mariadb/mariadb_files/bin/mariadbd, Version: 10.11.14-MariaDB-log (MariaDB Server). started with:
+Tcp port: 3306  Unix socket: /db1/myserver/mariadb/run/mysql.sock
+Time		    Id Command	Argument
+260220 21:34:16	     3 Connect	root@localhost on  using Socket
+		     3 Quit	
+260220 21:50:12	     4 Connect	root@localhost on  using Socket
+		     4 Query	select @@version_comment limit 1
+260220 21:50:37	     5 Connect	root@localhost on  using Socket
+		     5 Query	select @@version_comment limit 1
+260220 21:50:55	     5 Query	SHOW VARIABLES LIKE 'innodb_buffer_pool_size'
+260220 21:51:09	     5 Query	SHOW VARIABLES LIKE 'innodb_log_buffer_size'
+		     5 Query	SHOW VARIABLES LIKE 'max_connections'
+		     5 Query	SHOW VARIABLES LIKE 'key_buffer_size'
+		     5 Query	SHOW VARIABLES LIKE 'tmp_table_size'
+260220 21:51:33	     5 Query	SHOW VARIABLES LIKE 'max_heap_table_size'
+260220 21:51:35	     5 Query	SHOW STATUS LIKE 'Threads_connected'
+		     5 Query	SHOW STATUS LIKE 'Threads_running'
+260221  0:15:02	     6 Connect	root@localhost on  using Socket
+		     6 Query	/*!40100 SET @@SQL_MODE='' */
+		     6 Query	/*!40103 SET TIME_ZONE='+00:00' */
+		     6 Query	/*M!100100 SET @@MAX_STATEMENT_TIME=0.000000 */
+		     6 Query	/*M!100100 SET WAIT_TIMEOUT=DEFAULT */
+		     6 Query	set optimizer_switch='semijoin=off'
+		     6 Query	SELECT LOGFILE_GROUP_NAME, FILE_NAME, TOTAL_EXTENTS, INITIAL_SIZE, ENGINE, EXTRA FROM INFORMATION_SCHEMA.FILES WHERE FILE_TYPE = 'UNDO LOG' AND FILE_NAME IS NOT NULL AND LOGFILE_GROUP_NAME IS NOT NULL GROUP BY LOGFILE_GROUP_NAME, FILE_NAME, ENGINE, TOTAL_EXTENTS, INITIAL_SIZE ORDER BY LOGFILE_GROUP_NAME
+		     6 Query	SELECT DISTINCT TABLESPACE_NAME, FILE_NAME, LOGFILE_GROUP_NAME, EXTENT_SIZE, INITIAL_SIZE, ENGINE FROM INFORMATION_SCHEMA.FILES WHERE FILE_TYPE = 'DATAFILE' ORDER BY TABLESPACE_NAME, LOGFILE_GROUP_NAME
+		     6 Query	set optimizer_switch=default
+		     6 Query	SHOW DATABASES
+		     6 Init DB	mysql
+		     6 Query	SHOW CREATE DATABASE IF NOT EXISTS `mysql`
+		     6 Query	SELECT engine, table_type FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = DATABASE() AND table_name = 'general_log'
+		     6 Query	SET SQL_QUOTE_SHOW_CREATE=1
+		     6 Query	SET SESSION character_set_results = 'binary'
+		     6 Query	show create table `general_log`
+		     6 Query	SET SESSION character_set_results = 'utf8mb4'
+		     6 Query	select column_name, extra, generation_expression, data_type from information_schema.columns where table_schema=database() and table_name='general_log' order by ordinal_position
+		     6 Query	SELECT engine, table_type FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = DATABASE() AND table_name = 'slow_log'
+		     6 Query	SET SQL_QUOTE_SHOW_CREATE=1
+		     6 Query	SET SESSION character_set_results = 'binary'
+		     6 Query	show create table `slow_log`
+		     6 Query	SET SESSION character_set_results = 'utf8mb4'
+		     6 Query	select column_name, extra, generation_expression, data_type from information_schema.columns where table_schema=database() and table_name='slow_log' order by ordinal_position
+		     6 Query	SHOW FULL TABLES
+		     6 Query	LOCK TABLES `column_stats` READ /*!32311 LOCAL */,`columns_priv` READ /*!32311 LOCAL */,`db` READ /*!32311 LOCAL */,`event` READ /*!32311 LOCAL */,`func` READ /*!32311 LOCAL */,`global_priv` READ /*!32311 LOCAL */,`gtid_slave_pos` READ /*!32311 LOCAL */,`help_category` READ /*!32311 LOCAL */,`help_keyword` READ /*!32311 LOCAL */,`help_relation` READ /*!32311 LOCAL */,`help_topic` READ /*!32311 LOCAL */,`index_stats` READ /*!32311 LOCAL */,`innodb_index_stats` READ /*!32311 LOCAL */,`innodb_table_stats` READ /*!32311 LOCAL */,`plugin` READ /*!32311 LOCAL */,`proc` READ /*!32311 LOCAL */,`procs_priv` READ /*!32311 LOCAL */,`proxies_priv` READ /*!32311 LOCAL */,`roles_mapping` READ /*!32311 LOCAL */,`servers` READ /*!32311 LOCAL */,`table_stats` READ /*!32311 LOCAL */,`tables_priv` READ /*!32311 LOCAL */,`time_zone` READ /*!32311 LOCAL */,`time_zone_leap_second` READ /*!32311 LOCAL */,`time_zone_name` READ /*!32311 LOCAL */,`time_zone_transition` READ /*!32311 LOCAL */,`time_zone_transition_type` READ /*!32311 LOCAL */,`user` READ /*!32311 LOCAL */
+		     6 Query	SELECT engine, table_type FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = DATABASE() AND table_name = 'column_stats'
+		     6 Query	SET SQL_QUOTE_SHOW_CREATE=1
+		     6 Query	SET SESSION character_set_results = 'binary'
+		     6 Query	show create table `column_stats`
+		     6 Query	SET SESSION character_set_results = 'utf8mb4'
+		     6 Query	select column_name, extra, generation_expression, data_type from information_schema.columns where table_schema=database() and table_name='column_stats' order by ordinal_position
+		     6 Query	SELECT /*!40001 SQL_NO_CACHE */ `db_name`, `table_name`, `column_name`, `min_value`, `max_value`, `nulls_ratio`, `avg_length`, `avg_frequency`, `hist_size`, `hist_type`, `histogram` FROM `column_stats`
+		     6 Query	SET SESSION character_set_results = 'binary'
+		     6 Init DB	mysql
+		     6 Query	select @@collation_database
+		     6 Query	SELECT TRIGGER_NAME FROM INFORMATION_SCHEMA.TRIGGERS WHERE EVENT_OBJECT_SCHEMA = DATABASE() AND EVENT_OBJECT_TABLE = 'column_stats'
+		     6 Query	SET SESSION character_set_results = 'utf8mb4'
+		     6 Query	SELECT engine, table_type FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = DATABASE() AND table_name = 'columns_priv'
+		     6 Query	SET SQL_QUOTE_SHOW_CREATE=1
+		     6 Query	SET SESSION character_set_results = 'binary'
+		     6 Query	show create table `columns_priv`
+		     6 Query	SET SESSION character_set_results = 'utf8mb4'
+		     6 Query	select column_name, extra, generation_expression, data_type from information_schema.columns where table_schema=database() and table_name='columns_priv' order by ordinal_position
+		     6 Query	SELECT /*!40001 SQL_NO_CACHE */ `Host`, `Db`, `User`, `Table_name`, `Column_name`, `Timestamp`, `Column_priv` FROM `columns_priv`
+		     6 Query	SET SESSION character_set_results = 'binary'
+		     6 Init DB	mysql
+		     6 Query	select @@collation_database
+		     6 Query	SELECT TRIGGER_NAME FROM INFORMATION_SCHEMA.TRIGGERS WHERE EVENT_OBJECT_SCHEMA = DATABASE() AND EVENT_OBJECT_TABLE = 'columns_priv'
+		     6 Query	SET SESSION character_set_results = 'utf8mb4'
+		     6 Query	SELECT engine, table_type FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = DATABASE() AND table_name = 'db'
+		     6 Query	SET SQL_QUOTE_SHOW_CREATE=1
+		     6 Query	SET SESSION character_set_results = 'binary'
+		     6 Query	show create table `db`
+		     6 Query	SET SESSION character_set_results = 'utf8mb4'
+		     6 Query	select column_name, extra, generation_expression, data_type from information_schema.columns where table_schema=database() and table_name='db' order by ordinal_position
+		     6 Query	SELECT /*!40001 SQL_NO_CACHE */ `Host`, `Db`, `User`, `Select_priv`, `Insert_priv`, `Update_priv`, `Delete_priv`, `Create_priv`, `Drop_priv`, `Grant_priv`, `References_priv`, `Index_priv`, `Alter_priv`, `Create_tmp_table_priv`, `Lock_tables_priv`, `Create_view_priv`, `Show_view_priv`, `Create_routine_priv`, `Alter_routine_priv`, `Execute_priv`, `Event_priv`, `Trigger_priv`, `Delete_history_priv` FROM `db`
+		     6 Query	SET SESSION character_set_results = 'binary'
+		     6 Init DB	mysql
+		     6 Query	select @@collation_database
+		     6 Query	SELECT TRIGGER_NAME FROM INFORMATION_SCHEMA.TRIGGERS WHERE EVENT_OBJECT_SCHEMA = DATABASE() AND EVENT_OBJECT_TABLE = 'db'
+		     6 Query	SET SESSION character_set_results = 'utf8mb4'
+		     6 Query	SELECT engine, table_type FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = DATABASE() AND table_name = 'event'
+		     6 Query	SET SQL_QUOTE_SHOW_CREATE=1
+		     6 Query	SET SESSION character_set_results = 'binary'
+		     6 Query	show create table `event`
+		     6 Query	SET SESSION character_set_results = 'utf8mb4'
+		     6 Query	select column_name, extra, generation_expression, data_type from information_schema.columns where table_schema=database() and table_name='event' order by ordinal_position
+		     6 Query	SET SESSION character_set_results = 'binary'
+		     6 Init DB	mysql
+		     6 Query	select @@collation_database
+		     6 Query	SELECT TRIGGER_NAME FROM INFORMATION_SCHEMA.TRIGGERS WHERE EVENT_OBJECT_SCHEMA = DATABASE() AND EVENT_OBJECT_TABLE = 'event'
+		     6 Query	SET SESSION character_set_results = 'utf8mb4'
+		     6 Query	SELECT engine, table_type FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = DATABASE() AND table_name = 'func'
+		     6 Query	SET SQL_QUOTE_SHOW_CREATE=1
+		     6 Query	SET SESSION character_set_results = 'binary'
+		     6 Query	show create table `func`
+		     6 Query	SET SESSION character_set_results = 'utf8mb4'
+		     6 Query	select column_name, extra, generation_expression, data_type from information_schema.columns where table_schema=database() and table_name='func' order by ordinal_position
+		     6 Query	SELECT /*!40001 SQL_NO_CACHE */ `name`, `ret`, `dl`, `type` FROM `func`
+		     6 Query	SET SESSION character_set_results = 'binary'
+		     6 Init DB	mysql
+		     6 Query	select @@collation_database
+		     6 Query	SELECT TRIGGER_NAME FROM INFORMATION_SCHEMA.TRIGGERS WHERE EVENT_OBJECT_SCHEMA = DATABASE() AND EVENT_OBJECT_TABLE = 'func'
+		     6 Query	SET SESSION character_set_results = 'utf8mb4'
+		     6 Query	SELECT engine, table_type FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = DATABASE() AND table_name = 'global_priv'
+		     6 Query	SET SQL_QUOTE_SHOW_CREATE=1
+		     6 Query	SET SESSION character_set_results = 'binary'
+		     6 Query	show create table `global_priv`
+		     6 Query	SET SESSION character_set_results = 'utf8mb4'
+		     6 Query	select column_name, extra, generation_expression, data_type from information_schema.columns where table_schema=database() and table_name='global_priv' order by ordinal_position
+		     6 Query	SELECT /*!40001 SQL_NO_CACHE */ `Host`, `User`, `Priv` FROM `global_priv`
+		     6 Query	SET SESSION character_set_results = 'binary'
+		     6 Init DB	mysql
+		     6 Query	select @@collation_database
+		     6 Query	SELECT TRIGGER_NAME FROM INFORMATION_SCHEMA.TRIGGERS WHERE EVENT_OBJECT_SCHEMA = DATABASE() AND EVENT_OBJECT_TABLE = 'global_priv'
+		     6 Query	SET SESSION character_set_results = 'utf8mb4'
+		     6 Query	SELECT engine, table_type FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = DATABASE() AND table_name = 'gtid_slave_pos'
+		     6 Query	SET SQL_QUOTE_SHOW_CREATE=1
+		     6 Query	SET SESSION character_set_results = 'binary'
+		     6 Query	show create table `gtid_slave_pos`
+		     6 Query	SET SESSION character_set_results = 'utf8mb4'
+		     6 Query	select column_name, extra, generation_expression, data_type from information_schema.columns where table_schema=database() and table_name='gtid_slave_pos' order by ordinal_position
+		     6 Query	SELECT /*!40001 SQL_NO_CACHE */ `domain_id`, `sub_id`, `server_id`, `seq_no` FROM `gtid_slave_pos`
+		     6 Query	SET SESSION character_set_results = 'binary'
+		     6 Init DB	mysql
+		     6 Query	select @@collation_database
+		     6 Query	SELECT TRIGGER_NAME FROM INFORMATION_SCHEMA.TRIGGERS WHERE EVENT_OBJECT_SCHEMA = DATABASE() AND EVENT_OBJECT_TABLE = 'gtid_slave_pos'
+		     6 Query	SET SESSION character_set_results = 'utf8mb4'
+		     6 Query	SELECT engine, table_type FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = DATABASE() AND table_name = 'help_category'
+		     6 Query	SET SQL_QUOTE_SHOW_CREATE=1
+		     6 Query	SET SESSION character_set_results = 'binary'
+		     6 Query	show create table `help_category`
+		     6 Query	SET SESSION character_set_results = 'utf8mb4'
+		     6 Query	select column_name, extra, generation_expression, data_type from information_schema.columns where table_schema=database() and table_name='help_category' order by ordinal_position
+		     6 Query	SELECT /*!40001 SQL_NO_CACHE */ `help_category_id`, `name`, `parent_category_id`, `url` FROM `help_category`
+		     6 Query	SET SESSION character_set_results = 'binary'
+		     6 Init DB	mysql
+		     6 Query	select @@collation_database
+		     6 Query	SELECT TRIGGER_NAME FROM INFORMATION_SCHEMA.TRIGGERS WHERE EVENT_OBJECT_SCHEMA = DATABASE() AND EVENT_OBJECT_TABLE = 'help_category'
+		     6 Query	SET SESSION character_set_results = 'utf8mb4'
+		     6 Query	SELECT engine, table_type FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = DATABASE() AND table_name = 'help_keyword'
+		     6 Query	SET SQL_QUOTE_SHOW_CREATE=1
+		     6 Query	SET SESSION character_set_results = 'binary'
+		     6 Query	show create table `help_keyword`
+		     6 Query	SET SESSION character_set_results = 'utf8mb4'
+		     6 Query	select column_name, extra, generation_expression, data_type from information_schema.columns where table_schema=database() and table_name='help_keyword' order by ordinal_position
+		     6 Query	SELECT /*!40001 SQL_NO_CACHE */ `help_keyword_id`, `name` FROM `help_keyword`
+		     6 Query	SET SESSION character_set_results = 'binary'
+		     6 Init DB	mysql
+		     6 Query	select @@collation_database
+		     6 Query	SELECT TRIGGER_NAME FROM INFORMATION_SCHEMA.TRIGGERS WHERE EVENT_OBJECT_SCHEMA = DATABASE() AND EVENT_OBJECT_TABLE = 'help_keyword'
+		     6 Query	SET SESSION character_set_results = 'utf8mb4'
+		     6 Query	SELECT engine, table_type FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = DATABASE() AND table_name = 'help_relation'
+		     6 Query	SET SQL_QUOTE_SHOW_CREATE=1
+		     6 Query	SET SESSION character_set_results = 'binary'
+		     6 Query	show create table `help_relation`
+		     6 Query	SET SESSION character_set_results = 'utf8mb4'
+		     6 Query	select column_name, extra, generation_expression, data_type from information_schema.columns where table_schema=database() and table_name='help_relation' order by ordinal_position
+		     6 Query	SELECT /*!40001 SQL_NO_CACHE */ `help_topic_id`, `help_keyword_id` FROM `help_relation`
+		     6 Query	SET SESSION character_set_results = 'binary'
+		     6 Init DB	mysql
+		     6 Query	select @@collation_database
+		     6 Query	SELECT TRIGGER_NAME FROM INFORMATION_SCHEMA.TRIGGERS WHERE EVENT_OBJECT_SCHEMA = DATABASE() AND EVENT_OBJECT_TABLE = 'help_relation'
+		     6 Query	SET SESSION character_set_results = 'utf8mb4'
+		     6 Query	SELECT engine, table_type FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = DATABASE() AND table_name = 'help_topic'
+		     6 Query	SET SQL_QUOTE_SHOW_CREATE=1
+		     6 Query	SET SESSION character_set_results = 'binary'
+		     6 Query	show create table `help_topic`
+		     6 Query	SET SESSION character_set_results = 'utf8mb4'
+		     6 Query	select column_name, extra, generation_expression, data_type from information_schema.columns where table_schema=database() and table_name='help_topic' order by ordinal_position
+		     6 Query	SELECT /*!40001 SQL_NO_CACHE */ `help_topic_id`, `name`, `help_category_id`, `description`, `example`, `url` FROM `help_topic`
+		     6 Query	SET SESSION character_set_results = 'binary'
+		     6 Init DB	mysql
+		     6 Query	select @@collation_database
+		     6 Query	SELECT TRIGGER_NAME FROM INFORMATION_SCHEMA.TRIGGERS WHERE EVENT_OBJECT_SCHEMA = DATABASE() AND EVENT_OBJECT_TABLE = 'help_topic'
+		     6 Query	SET SESSION character_set_results = 'utf8mb4'
+		     6 Query	SELECT engine, table_type FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = DATABASE() AND table_name = 'index_stats'
+		     6 Query	SET SQL_QUOTE_SHOW_CREATE=1
+		     6 Query	SET SESSION character_set_results = 'binary'
+		     6 Query	show create table `index_stats`
+		     6 Query	SET SESSION character_set_results = 'utf8mb4'
+		     6 Query	select column_name, extra, generation_expression, data_type from information_schema.columns where table_schema=database() and table_name='index_stats' order by ordinal_position
+		     6 Query	SELECT /*!40001 SQL_NO_CACHE */ `db_name`, `table_name`, `index_name`, `prefix_arity`, `avg_frequency` FROM `index_stats`
+		     6 Query	SET SESSION character_set_results = 'binary'
+		     6 Init DB	mysql
+		     6 Query	select @@collation_database
+		     6 Query	SELECT TRIGGER_NAME FROM INFORMATION_SCHEMA.TRIGGERS WHERE EVENT_OBJECT_SCHEMA = DATABASE() AND EVENT_OBJECT_TABLE = 'index_stats'
+		     6 Query	SET SESSION character_set_results = 'utf8mb4'
+		     6 Query	SELECT engine, table_type FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = DATABASE() AND table_name = 'innodb_index_stats'
+		     6 Query	SET SQL_QUOTE_SHOW_CREATE=1
+		     6 Query	SET SESSION character_set_results = 'binary'
+		     6 Query	show create table `innodb_index_stats`
+		     6 Query	SET SESSION character_set_results = 'utf8mb4'
+		     6 Query	select column_name, extra, generation_expression, data_type from information_schema.columns where table_schema=database() and table_name='innodb_index_stats' order by ordinal_position
+		     6 Query	SET SESSION character_set_results = 'binary'
+		     6 Init DB	mysql
+		     6 Query	select @@collation_database
+		     6 Query	SELECT TRIGGER_NAME FROM INFORMATION_SCHEMA.TRIGGERS WHERE EVENT_OBJECT_SCHEMA = DATABASE() AND EVENT_OBJECT_TABLE = 'innodb_index_stats'
+		     6 Query	SET SESSION character_set_results = 'utf8mb4'
+		     6 Query	SELECT engine, table_type FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = DATABASE() AND table_name = 'innodb_table_stats'
+		     6 Query	SET SQL_QUOTE_SHOW_CREATE=1
+		     6 Query	SET SESSION character_set_results = 'binary'
+		     6 Query	show create table `innodb_table_stats`
+		     6 Query	SET SESSION character_set_results = 'utf8mb4'
+		     6 Query	select column_name, extra, generation_expression, data_type from information_schema.columns where table_schema=database() and table_name='innodb_table_stats' order by ordinal_position
+		     6 Query	SET SESSION character_set_results = 'binary'
+		     6 Init DB	mysql
+		     6 Query	select @@collation_database
+		     6 Query	SELECT TRIGGER_NAME FROM INFORMATION_SCHEMA.TRIGGERS WHERE EVENT_OBJECT_SCHEMA = DATABASE() AND EVENT_OBJECT_TABLE = 'innodb_table_stats'
+		     6 Query	SET SESSION character_set_results = 'utf8mb4'
+		     6 Query	SELECT engine, table_type FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = DATABASE() AND table_name = 'plugin'
+		     6 Query	SET SQL_QUOTE_SHOW_CREATE=1
+		     6 Query	SET SESSION character_set_results = 'binary'
+		     6 Query	show create table `plugin`
+		     6 Query	SET SESSION character_set_results = 'utf8mb4'
+		     6 Query	select column_name, extra, generation_expression, data_type from information_schema.columns where table_schema=database() and table_name='plugin' order by ordinal_position
+		     6 Query	SELECT /*!40001 SQL_NO_CACHE */ `name`, `dl` FROM `plugin`
+		     6 Query	SET SESSION character_set_results = 'binary'
+		     6 Init DB	mysql
+		     6 Query	select @@collation_database
+		     6 Query	SELECT TRIGGER_NAME FROM INFORMATION_SCHEMA.TRIGGERS WHERE EVENT_OBJECT_SCHEMA = DATABASE() AND EVENT_OBJECT_TABLE = 'plugin'
+		     6 Query	SET SESSION character_set_results = 'utf8mb4'
+		     6 Query	SELECT engine, table_type FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = DATABASE() AND table_name = 'proc'
+		     6 Query	SET SQL_QUOTE_SHOW_CREATE=1
+		     6 Query	SET SESSION character_set_results = 'binary'
+		     6 Query	show create table `proc`
+		     6 Query	SET SESSION character_set_results = 'utf8mb4'
+		     6 Query	select column_name, extra, generation_expression, data_type from information_schema.columns where table_schema=database() and table_name='proc' order by ordinal_position
+		     6 Query	SELECT /*!40001 SQL_NO_CACHE */ `db`, `name`, `type`, `specific_name`, `language`, `sql_data_access`, `is_deterministic`, `security_type`, `param_list`, `returns`, `body`, `definer`, `created`, `modified`, `sql_mode`, `comment`, `character_set_client`, `collation_connection`, `db_collation`, `body_utf8`, `aggregate` FROM `proc`
+		     6 Query	SET SESSION character_set_results = 'binary'
+		     6 Init DB	mysql
+		     6 Query	select @@collation_database
+		     6 Query	SELECT TRIGGER_NAME FROM INFORMATION_SCHEMA.TRIGGERS WHERE EVENT_OBJECT_SCHEMA = DATABASE() AND EVENT_OBJECT_TABLE = 'proc'
+		     6 Query	SET SESSION character_set_results = 'utf8mb4'
+		     6 Query	SELECT engine, table_type FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = DATABASE() AND table_name = 'procs_priv'
+		     6 Query	SET SQL_QUOTE_SHOW_CREATE=1
+		     6 Query	SET SESSION character_set_results = 'binary'
+		     6 Query	show create table `procs_priv`
+		     6 Query	SET SESSION character_set_results = 'utf8mb4'
+		     6 Query	select column_name, extra, generation_expression, data_type from information_schema.columns where table_schema=database() and table_name='procs_priv' order by ordinal_position
+		     6 Query	SELECT /*!40001 SQL_NO_CACHE */ `Host`, `Db`, `User`, `Routine_name`, `Routine_type`, `Grantor`, `Proc_priv`, `Timestamp` FROM `procs_priv`
+		     6 Query	SET SESSION character_set_results = 'binary'
+		     6 Init DB	mysql
+		     6 Query	select @@collation_database
+		     6 Query	SELECT TRIGGER_NAME FROM INFORMATION_SCHEMA.TRIGGERS WHERE EVENT_OBJECT_SCHEMA = DATABASE() AND EVENT_OBJECT_TABLE = 'procs_priv'
+		     6 Query	SET SESSION character_set_results = 'utf8mb4'
+		     6 Query	SELECT engine, table_type FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = DATABASE() AND table_name = 'proxies_priv'
+		     6 Query	SET SQL_QUOTE_SHOW_CREATE=1
+		     6 Query	SET SESSION character_set_results = 'binary'
+		     6 Query	show create table `proxies_priv`
+		     6 Query	SET SESSION character_set_results = 'utf8mb4'
+		     6 Query	select column_name, extra, generation_expression, data_type from information_schema.columns where table_schema=database() and table_name='proxies_priv' order by ordinal_position
+		     6 Query	SELECT /*!40001 SQL_NO_CACHE */ `Host`, `User`, `Proxied_host`, `Proxied_user`, `With_grant`, `Grantor`, `Timestamp` FROM `proxies_priv`
+		     6 Query	SET SESSION character_set_results = 'binary'
+		     6 Init DB	mysql
+		     6 Query	select @@collation_database
+		     6 Query	SELECT TRIGGER_NAME FROM INFORMATION_SCHEMA.TRIGGERS WHERE EVENT_OBJECT_SCHEMA = DATABASE() AND EVENT_OBJECT_TABLE = 'proxies_priv'
+		     6 Query	SET SESSION character_set_results = 'utf8mb4'
+		     6 Query	SELECT engine, table_type FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = DATABASE() AND table_name = 'roles_mapping'
+		     6 Query	SET SQL_QUOTE_SHOW_CREATE=1
+		     6 Query	SET SESSION character_set_results = 'binary'
+		     6 Query	show create table `roles_mapping`
+		     6 Query	SET SESSION character_set_results = 'utf8mb4'
+		     6 Query	select column_name, extra, generation_expression, data_type from information_schema.columns where table_schema=database() and table_name='roles_mapping' order by ordinal_position
+		     6 Query	SELECT /*!40001 SQL_NO_CACHE */ `Host`, `User`, `Role`, `Admin_option` FROM `roles_mapping`
+		     6 Query	SET SESSION character_set_results = 'binary'
+		     6 Init DB	mysql
+		     6 Query	select @@collation_database
+		     6 Query	SELECT TRIGGER_NAME FROM INFORMATION_SCHEMA.TRIGGERS WHERE EVENT_OBJECT_SCHEMA = DATABASE() AND EVENT_OBJECT_TABLE = 'roles_mapping'
+		     6 Query	SET SESSION character_set_results = 'utf8mb4'
+		     6 Query	SELECT engine, table_type FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = DATABASE() AND table_name = 'servers'
+		     6 Query	SET SQL_QUOTE_SHOW_CREATE=1
+		     6 Query	SET SESSION character_set_results = 'binary'
+		     6 Query	show create table `servers`
+		     6 Query	SET SESSION character_set_results = 'utf8mb4'
+		     6 Query	select column_name, extra, generation_expression, data_type from information_schema.columns where table_schema=database() and table_name='servers' order by ordinal_position
+		     6 Query	SELECT /*!40001 SQL_NO_CACHE */ `Server_name`, `Host`, `Db`, `Username`, `Password`, `Port`, `Socket`, `Wrapper`, `Owner` FROM `servers`
+		     6 Query	SET SESSION character_set_results = 'binary'
+		     6 Init DB	mysql
+		     6 Query	select @@collation_database
+		     6 Query	SELECT TRIGGER_NAME FROM INFORMATION_SCHEMA.TRIGGERS WHERE EVENT_OBJECT_SCHEMA = DATABASE() AND EVENT_OBJECT_TABLE = 'servers'
+		     6 Query	SET SESSION character_set_results = 'utf8mb4'
+		     6 Query	SELECT engine, table_type FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = DATABASE() AND table_name = 'table_stats'
+		     6 Query	SET SQL_QUOTE_SHOW_CREATE=1
+		     6 Query	SET SESSION character_set_results = 'binary'
+		     6 Query	show create table `table_stats`
+		     6 Query	SET SESSION character_set_results = 'utf8mb4'
+		     6 Query	select column_name, extra, generation_expression, data_type from information_schema.columns where table_schema=database() and table_name='table_stats' order by ordinal_position
+		     6 Query	SELECT /*!40001 SQL_NO_CACHE */ `db_name`, `table_name`, `cardinality` FROM `table_stats`
+		     6 Query	SET SESSION character_set_results = 'binary'
+		     6 Init DB	mysql
+		     6 Query	select @@collation_database
+		     6 Query	SELECT TRIGGER_NAME FROM INFORMATION_SCHEMA.TRIGGERS WHERE EVENT_OBJECT_SCHEMA = DATABASE() AND EVENT_OBJECT_TABLE = 'table_stats'
+		     6 Query	SET SESSION character_set_results = 'utf8mb4'
+		     6 Query	SELECT engine, table_type FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = DATABASE() AND table_name = 'tables_priv'
+		     6 Query	SET SQL_QUOTE_SHOW_CREATE=1
+		     6 Query	SET SESSION character_set_results = 'binary'
+		     6 Query	show create table `tables_priv`
+		     6 Query	SET SESSION character_set_results = 'utf8mb4'
+		     6 Query	select column_name, extra, generation_expression, data_type from information_schema.columns where table_schema=database() and table_name='tables_priv' order by ordinal_position
+		     6 Query	SELECT /*!40001 SQL_NO_CACHE */ `Host`, `Db`, `User`, `Table_name`, `Grantor`, `Timestamp`, `Table_priv`, `Column_priv` FROM `tables_priv`
+		     6 Query	SET SESSION character_set_results = 'binary'
+		     6 Init DB	mysql
+		     6 Query	select @@collation_database
+		     6 Query	SELECT TRIGGER_NAME FROM INFORMATION_SCHEMA.TRIGGERS WHERE EVENT_OBJECT_SCHEMA = DATABASE() AND EVENT_OBJECT_TABLE = 'tables_priv'
+		     6 Query	SET SESSION character_set_results = 'utf8mb4'
+		     6 Query	SELECT engine, table_type FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = DATABASE() AND table_name = 'time_zone'
+		     6 Query	SET SQL_QUOTE_SHOW_CREATE=1
+		     6 Query	SET SESSION character_set_results = 'binary'
+		     6 Query	show create table `time_zone`
+		     6 Query	SET SESSION character_set_results = 'utf8mb4'
+		     6 Query	select column_name, extra, generation_expression, data_type from information_schema.columns where table_schema=database() and table_name='time_zone' order by ordinal_position
+		     6 Query	SELECT /*!40001 SQL_NO_CACHE */ `Time_zone_id`, `Use_leap_seconds` FROM `time_zone`
+		     6 Query	SET SESSION character_set_results = 'binary'
+		     6 Init DB	mysql
+		     6 Query	select @@collation_database
+		     6 Query	SELECT TRIGGER_NAME FROM INFORMATION_SCHEMA.TRIGGERS WHERE EVENT_OBJECT_SCHEMA = DATABASE() AND EVENT_OBJECT_TABLE = 'time_zone'
+		     6 Query	SET SESSION character_set_results = 'utf8mb4'
+		     6 Query	SELECT engine, table_type FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = DATABASE() AND table_name = 'time_zone_leap_second'
+		     6 Query	SET SQL_QUOTE_SHOW_CREATE=1
+		     6 Query	SET SESSION character_set_results = 'binary'
+		     6 Query	show create table `time_zone_leap_second`
+		     6 Query	SET SESSION character_set_results = 'utf8mb4'
+		     6 Query	select column_name, extra, generation_expression, data_type from information_schema.columns where table_schema=database() and table_name='time_zone_leap_second' order by ordinal_position
+		     6 Query	SELECT /*!40001 SQL_NO_CACHE */ `Transition_time`, `Correction` FROM `time_zone_leap_second`
+		     6 Query	SET SESSION character_set_results = 'binary'
+		     6 Init DB	mysql
+		     6 Query	select @@collation_database
+		     6 Query	SELECT TRIGGER_NAME FROM INFORMATION_SCHEMA.TRIGGERS WHERE EVENT_OBJECT_SCHEMA = DATABASE() AND EVENT_OBJECT_TABLE = 'time_zone_leap_second'
+		     6 Query	SET SESSION character_set_results = 'utf8mb4'
+		     6 Query	SELECT engine, table_type FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = DATABASE() AND table_name = 'time_zone_name'
+		     6 Query	SET SQL_QUOTE_SHOW_CREATE=1
+		     6 Query	SET SESSION character_set_results = 'binary'
+		     6 Query	show create table `time_zone_name`
+		     6 Query	SET SESSION character_set_results = 'utf8mb4'
+		     6 Query	select column_name, extra, generation_expression, data_type from information_schema.columns where table_schema=database() and table_name='time_zone_name' order by ordinal_position
+		     6 Query	SELECT /*!40001 SQL_NO_CACHE */ `Name`, `Time_zone_id` FROM `time_zone_name`
+		     6 Query	SET SESSION character_set_results = 'binary'
+		     6 Init DB	mysql
+		     6 Query	select @@collation_database
+		     6 Query	SELECT TRIGGER_NAME FROM INFORMATION_SCHEMA.TRIGGERS WHERE EVENT_OBJECT_SCHEMA = DATABASE() AND EVENT_OBJECT_TABLE = 'time_zone_name'
+		     6 Query	SET SESSION character_set_results = 'utf8mb4'
+		     6 Query	SELECT engine, table_type FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = DATABASE() AND table_name = 'time_zone_transition'
+		     6 Query	SET SQL_QUOTE_SHOW_CREATE=1
+		     6 Query	SET SESSION character_set_results = 'binary'
+		     6 Query	show create table `time_zone_transition`
+		     6 Query	SET SESSION character_set_results = 'utf8mb4'
+		     6 Query	select column_name, extra, generation_expression, data_type from information_schema.columns where table_schema=database() and table_name='time_zone_transition' order by ordinal_position
+		     6 Query	SELECT /*!40001 SQL_NO_CACHE */ `Time_zone_id`, `Transition_time`, `Transition_type_id` FROM `time_zone_transition`
+		     6 Query	SET SESSION character_set_results = 'binary'
+		     6 Init DB	mysql
+		     6 Query	select @@collation_database
+		     6 Query	SELECT TRIGGER_NAME FROM INFORMATION_SCHEMA.TRIGGERS WHERE EVENT_OBJECT_SCHEMA = DATABASE() AND EVENT_OBJECT_TABLE = 'time_zone_transition'
+		     6 Query	SET SESSION character_set_results = 'utf8mb4'
+		     6 Query	SELECT engine, table_type FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = DATABASE() AND table_name = 'time_zone_transition_type'
+		     6 Query	SET SQL_QUOTE_SHOW_CREATE=1
+		     6 Query	SET SESSION character_set_results = 'binary'
+		     6 Query	show create table `time_zone_transition_type`
+		     6 Query	SET SESSION character_set_results = 'utf8mb4'
+		     6 Query	select column_name, extra, generation_expression, data_type from information_schema.columns where table_schema=database() and table_name='time_zone_transition_type' order by ordinal_position
+		     6 Query	SELECT /*!40001 SQL_NO_CACHE */ `Time_zone_id`, `Transition_type_id`, `Offset`, `Is_DST`, `Abbreviation` FROM `time_zone_transition_type`
+		     6 Query	SET SESSION character_set_results = 'binary'
+		     6 Init DB	mysql
+		     6 Query	select @@collation_database
+		     6 Query	SELECT TRIGGER_NAME FROM INFORMATION_SCHEMA.TRIGGERS WHERE EVENT_OBJECT_SCHEMA = DATABASE() AND EVENT_OBJECT_TABLE = 'time_zone_transition_type'
+		     6 Query	SET SESSION character_set_results = 'utf8mb4'
+		     6 Query	SELECT engine, table_type FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = DATABASE() AND table_name = 'user'
+		     6 Query	SET SQL_QUOTE_SHOW_CREATE=1
+		     6 Query	SET SESSION character_set_results = 'binary'
+		     6 Query	show create table `user`
+		     6 Query	SET SESSION character_set_results = 'utf8mb4'
+		     6 Query	SET SESSION character_set_results = 'binary'
+		     6 Query	SHOW FIELDS FROM `user`
+		     6 Query	SET SESSION character_set_results = 'utf8mb4'
+		     6 Query	SET SESSION character_set_results = 'binary'
+		     6 Init DB	mysql
+		     6 Query	select @@collation_database
+		     6 Query	SELECT TRIGGER_NAME FROM INFORMATION_SCHEMA.TRIGGERS WHERE EVENT_OBJECT_SCHEMA = DATABASE() AND EVENT_OBJECT_TABLE = 'user'
+		     6 Query	SET SESSION character_set_results = 'utf8mb4'
+		     6 Query	UNLOCK TABLES
+		     6 Query	SELECT engine, table_type FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = DATABASE() AND table_name = 'transaction_registry'
+		     6 Query	SET SQL_QUOTE_SHOW_CREATE=1
+		     6 Query	SET SESSION character_set_results = 'binary'
+		     6 Query	show create table `transaction_registry`
+		     6 Query	SET SESSION character_set_results = 'utf8mb4'
+		     6 Query	select column_name, extra, generation_expression, data_type from information_schema.columns where table_schema=database() and table_name='transaction_registry' order by ordinal_position
+		     6 Init DB	test
+		     6 Query	SHOW CREATE DATABASE IF NOT EXISTS `test`
+		     6 Query	SHOW FULL TABLES
+		     6 Query	UNLOCK TABLES
+		     6 Query	SHOW DATABASES
+		     6 Init DB	mysql
+		     6 Query	SHOW FULL TABLES
+		     6 Query	LOCK TABLES `column_stats` READ /*!32311 LOCAL */,`columns_priv` READ /*!32311 LOCAL */,`db` READ /*!32311 LOCAL */,`event` READ /*!32311 LOCAL */,`func` READ /*!32311 LOCAL */,`global_priv` READ /*!32311 LOCAL */,`gtid_slave_pos` READ /*!32311 LOCAL */,`help_category` READ /*!32311 LOCAL */,`help_keyword` READ /*!32311 LOCAL */,`help_relation` READ /*!32311 LOCAL */,`help_topic` READ /*!32311 LOCAL */,`index_stats` READ /*!32311 LOCAL */,`innodb_index_stats` READ /*!32311 LOCAL */,`innodb_table_stats` READ /*!32311 LOCAL */,`plugin` READ /*!32311 LOCAL */,`proc` READ /*!32311 LOCAL */,`procs_priv` READ /*!32311 LOCAL */,`proxies_priv` READ /*!32311 LOCAL */,`roles_mapping` READ /*!32311 LOCAL */,`servers` READ /*!32311 LOCAL */,`table_stats` READ /*!32311 LOCAL */,`tables_priv` READ /*!32311 LOCAL */,`time_zone` READ /*!32311 LOCAL */,`time_zone_leap_second` READ /*!32311 LOCAL */,`time_zone_name` READ /*!32311 LOCAL */,`time_zone_transition` READ /*!32311 LOCAL */,`time_zone_transition_type` READ /*!32311 LOCAL */,`user` READ /*!32311 LOCAL */
+		     6 Query	SET SESSION character_set_results = 'binary'
+		     6 Query	SHOW CREATE TABLE `column_stats`
+		     6 Query	SET SESSION character_set_results = 'utf8mb4'
+		     6 Query	SET SESSION character_set_results = 'binary'
+		     6 Query	SHOW CREATE TABLE `columns_priv`
+		     6 Query	SET SESSION character_set_results = 'utf8mb4'
+		     6 Query	SET SESSION character_set_results = 'binary'
+		     6 Query	SHOW CREATE TABLE `db`
+		     6 Query	SET SESSION character_set_results = 'utf8mb4'
+		     6 Query	SET SESSION character_set_results = 'binary'
+		     6 Query	SHOW CREATE TABLE `event`
+		     6 Query	SET SESSION character_set_results = 'utf8mb4'
+		     6 Query	SET SESSION character_set_results = 'binary'
+		     6 Query	SHOW CREATE TABLE `func`
+		     6 Query	SET SESSION character_set_results = 'utf8mb4'
+		     6 Query	SET SESSION character_set_results = 'binary'
+		     6 Query	SHOW CREATE TABLE `global_priv`
+		     6 Query	SET SESSION character_set_results = 'utf8mb4'
+		     6 Query	SET SESSION character_set_results = 'binary'
+		     6 Query	SHOW CREATE TABLE `gtid_slave_pos`
+		     6 Query	SET SESSION character_set_results = 'utf8mb4'
+		     6 Query	SET SESSION character_set_results = 'binary'
+		     6 Query	SHOW CREATE TABLE `help_category`
+		     6 Query	SET SESSION character_set_results = 'utf8mb4'
+		     6 Query	SET SESSION character_set_results = 'binary'
+		     6 Query	SHOW CREATE TABLE `help_keyword`
+		     6 Query	SET SESSION character_set_results = 'utf8mb4'
+		     6 Query	SET SESSION character_set_results = 'binary'
+		     6 Query	SHOW CREATE TABLE `help_relation`
+		     6 Query	SET SESSION character_set_results = 'utf8mb4'
+		     6 Query	SET SESSION character_set_results = 'binary'
+		     6 Query	SHOW CREATE TABLE `help_topic`
+		     6 Query	SET SESSION character_set_results = 'utf8mb4'
+		     6 Query	SET SESSION character_set_results = 'binary'
+		     6 Query	SHOW CREATE TABLE `index_stats`
+		     6 Query	SET SESSION character_set_results = 'utf8mb4'
+		     6 Query	SET SESSION character_set_results = 'binary'
+		     6 Query	SHOW CREATE TABLE `innodb_index_stats`
+		     6 Query	SET SESSION character_set_results = 'utf8mb4'
+		     6 Query	SET SESSION character_set_results = 'binary'
+		     6 Query	SHOW CREATE TABLE `innodb_table_stats`
+		     6 Query	SET SESSION character_set_results = 'utf8mb4'
+		     6 Query	SET SESSION character_set_results = 'binary'
+		     6 Query	SHOW CREATE TABLE `plugin`
+		     6 Query	SET SESSION character_set_results = 'utf8mb4'
+		     6 Query	SET SESSION character_set_results = 'binary'
+		     6 Query	SHOW CREATE TABLE `proc`
+		     6 Query	SET SESSION character_set_results = 'utf8mb4'
+		     6 Query	SET SESSION character_set_results = 'binary'
+		     6 Query	SHOW CREATE TABLE `procs_priv`
+		     6 Query	SET SESSION character_set_results = 'utf8mb4'
+		     6 Query	SET SESSION character_set_results = 'binary'
+		     6 Query	SHOW CREATE TABLE `proxies_priv`
+		     6 Query	SET SESSION character_set_results = 'utf8mb4'
+		     6 Query	SET SESSION character_set_results = 'binary'
+		     6 Query	SHOW CREATE TABLE `roles_mapping`
+		     6 Query	SET SESSION character_set_results = 'utf8mb4'
+		     6 Query	SET SESSION character_set_results = 'binary'
+		     6 Query	SHOW CREATE TABLE `servers`
+		     6 Query	SET SESSION character_set_results = 'utf8mb4'
+		     6 Query	SET SESSION character_set_results = 'binary'
+		     6 Query	SHOW CREATE TABLE `table_stats`
+		     6 Query	SET SESSION character_set_results = 'utf8mb4'
+		     6 Query	SET SESSION character_set_results = 'binary'
+		     6 Query	SHOW CREATE TABLE `tables_priv`
+		     6 Query	SET SESSION character_set_results = 'utf8mb4'
+		     6 Query	SET SESSION character_set_results = 'binary'
+		     6 Query	SHOW CREATE TABLE `time_zone`
+		     6 Query	SET SESSION character_set_results = 'utf8mb4'
+		     6 Query	SET SESSION character_set_results = 'binary'
+		     6 Query	SHOW CREATE TABLE `time_zone_leap_second`
+		     6 Query	SET SESSION character_set_results = 'utf8mb4'
+		     6 Query	SET SESSION character_set_results = 'binary'
+		     6 Query	SHOW CREATE TABLE `time_zone_name`
+		     6 Query	SET SESSION character_set_results = 'utf8mb4'
+		     6 Query	SET SESSION character_set_results = 'binary'
+		     6 Query	SHOW CREATE TABLE `time_zone_transition`
+		     6 Query	SET SESSION character_set_results = 'utf8mb4'
+		     6 Query	SET SESSION character_set_results = 'binary'
+		     6 Query	SHOW CREATE TABLE `time_zone_transition_type`
+		     6 Query	SET SESSION character_set_results = 'utf8mb4'
+		     6 Query	SET SESSION character_set_results = 'binary'
+		     6 Query	SHOW CREATE TABLE `user`
+		     6 Query	SELECT CHECK_OPTION, DEFINER, SECURITY_TYPE,        CHARACTER_SET_CLIENT, COLLATION_CONNECTION FROM information_schema.views WHERE table_name='user' AND table_schema='mysql'
+		     6 Query	SET SESSION character_set_results = 'utf8mb4'
+		     6 Query	UNLOCK TABLES
+		     6 Init DB	test
+		     6 Query	SHOW FULL TABLES
+		     6 Query	UNLOCK TABLES
+		     6 Quit	
