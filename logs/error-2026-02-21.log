@@ -1,0 +1,143 @@
+2026-02-21  0:48:06 4 [Warning] Aborted connection 4 to db: 'unconnected' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2026-02-21  0:48:06 5 [Warning] Aborted connection 5 to db: 'unconnected' user: 'root' host: 'localhost' (Got an error reading communication packets)
+
+Status information:
+
+Current dir: /db1/myserver/mariadb/data/
+Running threads: 0  Cached threads: 2  Stack size: 299008
+
+Key caches:
+default
+Buffer_size:     134217728
+Block_size:           1024
+Division_limit:        100
+Age_threshold:         300
+Partitions:              0
+blocks used:             0
+not flushed:             0
+w_requests:              0
+writes:                  0
+r_requests:              0
+reads:                   0
+
+
+handler status:
+read_key:          125
+read_next:         202
+read_rnd           207
+read_first:          4
+write:               0
+delete               0
+update:              0
+
+Table status:
+Opened tables:         42
+Open tables:           35
+Open files:            59
+Open streams:           4
+
+Alarm status:
+Active alarms:   0
+Max used alarms: 0
+Next alarm time: 0
+
+Memory status:
+Non-mmapped space allocated from system: 13520896
+Number of free chunks:                   113
+Number of fastbin blocks:                16
+Number of mmapped regions:               8
+Space in mmapped regions:                41029632
+Maximum total allocated space:           0
+Space available in freed fastbin blocks: 960
+Total allocated space:                   8858432
+Total free space:                        4662464
+Top-most, releasable space:              62256
+Estimated memory (with thread stack):    55148544
+Global memory allocated by server:       444421568
+Memory allocated by threads:             0
+
+
+
+Events status:
+LLA = Last Locked At  LUA = Last Unlocked At
+WOC = Waiting On Condition  DL = Data Locked
+
+Event scheduler status:
+State      : INITIALIZED
+Thread id  : 0
+LLA        : n/a:0
+LUA        : n/a:0
+WOC        : NO
+Workers    : 0
+Executed   : 0
+Data locked: NO
+
+Event queue status:
+Element count   : 0
+Data locked     : NO
+Attempting lock : NO
+LLA             : init_queue:141
+LUA             : init_queue:151
+WOC             : NO
+Next activation : never
+2026-02-21  0:48:07 0 [Note] /db1/myserver/mariadb/mariadb_files/bin/mariadbd (initiated by: unknown): Normal shutdown
+2026-02-21  0:48:07 0 [Note] InnoDB: FTS optimize thread exiting.
+2026-02-21  0:48:07 0 [Note] InnoDB: Starting shutdown...
+2026-02-21  0:48:07 0 [Note] InnoDB: Dumping buffer pool(s) to /db1/myserver/mariadb/data/ib_buffer_pool
+2026-02-21  0:48:07 0 [Note] InnoDB: Buffer pool(s) dump completed at 260221  0:48:07
+2026-02-21  0:48:07 0 [Note] InnoDB: Removed temporary tablespace data file: "./ibtmp1"
+2026-02-21  0:48:07 0 [Note] InnoDB: Shutdown completed; log sequence number 46846; transaction id 15
+2026-02-21  0:48:07 0 [Note] /db1/myserver/mariadb/mariadb_files/bin/mariadbd: Shutdown complete
+260221 00:48:07 mysqld_safe mysqld from pid file /db1/myserver/mariadb/run/mysqld.pid ended
+260221 21:18:22 mysqld_safe Starting mariadbd daemon with databases from /db1/myserver/mariadb/data
+2026-02-21 21:18:22 0 [Note] Starting MariaDB 10.11.14-MariaDB-log source revision 053f9bcb5b147bf00edb99e1310bae9125b7f125 server_uid /9bIqikmmumfUmtRKI2HIde1T6c= as process 4430
+/db1/myserver/mariadb/mariadb_files/bin/mariadbd: One can only use the --user switch if running as root
+2026-02-21 21:18:23 0 [Note] InnoDB: Compressed tables use zlib 1.3.1
+2026-02-21 21:18:23 0 [Note] InnoDB: Number of transaction pools: 1
+2026-02-21 21:18:23 0 [Note] InnoDB: Using crc32 + pclmulqdq instructions
+2026-02-21 21:18:23 0 [Note] InnoDB: Using Linux native AIO
+2026-02-21 21:18:23 0 [Note] InnoDB: innodb_buffer_pool_size_max=128m, innodb_buffer_pool_size=128m
+2026-02-21 21:18:23 0 [Note] InnoDB: Completed initialization of buffer pool
+2026-02-21 21:18:23 0 [Note] InnoDB: File system buffers for log disabled (block size=4096 bytes)
+2026-02-21 21:18:23 0 [Note] InnoDB: End of log at LSN=46846
+2026-02-21 21:18:23 0 [Note] InnoDB: 128 rollback segments are active.
+2026-02-21 21:18:23 0 [Note] InnoDB: Setting file './ibtmp1' size to 12.000MiB. Physically writing the file full; Please wait ...
+2026-02-21 21:18:23 0 [Note] InnoDB: File './ibtmp1' size is now 12.000MiB.
+2026-02-21 21:18:23 0 [Note] InnoDB: log sequence number 46846; transaction id 14
+2026-02-21 21:18:23 0 [Note] Plugin 'FEEDBACK' is disabled.
+2026-02-21 21:18:23 0 [Note] InnoDB: Loading buffer pool(s) from /db1/myserver/mariadb/data/ib_buffer_pool
+2026-02-21 21:18:23 0 [Note] InnoDB: Buffer pool(s) load completed at 260221 21:18:23
+2026-02-21 21:18:23 0 [Note] Server socket created on IP: 'xxx.xxx.xxx.xxx', port: '3306'.
+2026-02-21 21:18:23 0 [Note] /db1/myserver/mariadb/mariadb_files/bin/mariadbd: ready for connections.
+Version: '10.11.14-MariaDB-log'  socket: '/db1/myserver/mariadb/run/mysql.sock'  port: 3306  MariaDB Server
+2026-02-21 21:33:28 0 [Note] /db1/myserver/mariadb/mariadb_files/bin/mariadbd (initiated by: root[root] @ localhost []): Normal shutdown
+2026-02-21 21:33:28 0 [Note] InnoDB: FTS optimize thread exiting.
+2026-02-21 21:33:28 0 [Note] InnoDB: Starting shutdown...
+2026-02-21 21:33:28 0 [Note] InnoDB: Dumping buffer pool(s) to /db1/myserver/mariadb/data/ib_buffer_pool
+2026-02-21 21:33:28 0 [Note] InnoDB: Buffer pool(s) dump completed at 260221 21:33:28
+2026-02-21 21:33:28 0 [Note] InnoDB: Removed temporary tablespace data file: "./ibtmp1"
+2026-02-21 21:33:28 0 [Note] InnoDB: Shutdown completed; log sequence number 46846; transaction id 15
+2026-02-21 21:33:28 0 [Note] /db1/myserver/mariadb/mariadb_files/bin/mariadbd: Shutdown complete
+260221 21:33:28 mysqld_safe mysqld from pid file /db1/myserver/mariadb/run/mysqld.pid ended
+260221 21:34:11 mysqld_safe Starting mariadbd daemon with databases from /db1/myserver/mariadb/data
+2026-02-21 21:34:11 0 [Note] Starting MariaDB 10.11.14-MariaDB-log source revision 053f9bcb5b147bf00edb99e1310bae9125b7f125 server_uid /9bIqikmmumfUmtRKI2HIde1T6c= as process 4631
+/db1/myserver/mariadb/mariadb_files/bin/mariadbd: One can only use the --user switch if running as root
+2026-02-21 21:34:11 0 [Note] InnoDB: Compressed tables use zlib 1.3.1
+2026-02-21 21:34:11 0 [Note] InnoDB: Number of transaction pools: 1
+2026-02-21 21:34:11 0 [Note] InnoDB: Using crc32 + pclmulqdq instructions
+2026-02-21 21:34:11 0 [Note] InnoDB: Using Linux native AIO
+2026-02-21 21:34:11 0 [Note] InnoDB: innodb_buffer_pool_size_max=64m, innodb_buffer_pool_size=64m
+2026-02-21 21:34:11 0 [Note] InnoDB: Completed initialization of buffer pool
+2026-02-21 21:34:11 0 [Note] InnoDB: File system buffers for log disabled (block size=4096 bytes)
+2026-02-21 21:34:11 0 [Note] InnoDB: End of log at LSN=46846
+2026-02-21 21:34:11 0 [Note] InnoDB: 128 rollback segments are active.
+2026-02-21 21:34:11 0 [Note] InnoDB: Setting file './ibtmp1' size to 12.000MiB. Physically writing the file full; Please wait ...
+2026-02-21 21:34:11 0 [Note] InnoDB: File './ibtmp1' size is now 12.000MiB.
+2026-02-21 21:34:11 0 [Note] InnoDB: log sequence number 46846; transaction id 14
+2026-02-21 21:34:11 0 [Note] InnoDB: Loading buffer pool(s) from /db1/myserver/mariadb/data/ib_buffer_pool
+2026-02-21 21:34:11 0 [Note] Plugin 'FEEDBACK' is disabled.
+2026-02-21 21:34:11 0 [Note] Server socket created on IP: 'xxx.xxx.xxx.xxx', port: '3306'.
+2026-02-21 21:34:11 0 [Note] InnoDB: Buffer pool(s) load completed at 260221 21:34:11
+2026-02-21 21:34:11 0 [Note] /db1/myserver/mariadb/mariadb_files/bin/mariadbd: ready for connections.
+Version: '10.11.14-MariaDB-log'  socket: '/db1/myserver/mariadb/run/mysql.sock'  port: 3306  MariaDB Server
+2026-02-21 21:34:30 4 [Warning] Access denied for user 'root'@'localhost' (using password: YES)
