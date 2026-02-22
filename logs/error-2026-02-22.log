@@ -1,0 +1,31 @@
+2026-02-22  2:20:31 0 [Note] /db1/myserver/mariadb/mariadb_files/bin/mariadbd (initiated by: unknown): Normal shutdown
+2026-02-22  2:20:31 0 [Note] InnoDB: FTS optimize thread exiting.
+2026-02-22  2:20:32 0 [Note] InnoDB: Starting shutdown...
+2026-02-22  2:20:32 0 [Note] InnoDB: Dumping buffer pool(s) to /db1/myserver/mariadb/data/ib_buffer_pool
+2026-02-22  2:20:32 0 [Note] InnoDB: Buffer pool(s) dump completed at 260222  2:20:32
+2026-02-22  2:20:32 0 [Note] InnoDB: Removed temporary tablespace data file: "./ibtmp1"
+2026-02-22  2:20:32 0 [Note] InnoDB: Shutdown completed; log sequence number 46846; transaction id 15
+2026-02-22  2:20:32 0 [Note] /db1/myserver/mariadb/mariadb_files/bin/mariadbd: Shutdown complete
+260222 02:20:32 mysqld_safe mysqld from pid file /db1/myserver/mariadb/run/mysqld.pid ended
+260222 15:27:49 mysqld_safe Starting mariadbd daemon with databases from /db1/myserver/mariadb/data
+2026-02-22 15:27:49 0 [Note] Starting MariaDB 10.11.14-MariaDB-log source revision 053f9bcb5b147bf00edb99e1310bae9125b7f125 server_uid /9bIqikmmumfUmtRKI2HIde1T6c= as process 1583
+/db1/myserver/mariadb/mariadb_files/bin/mariadbd: One can only use the --user switch if running as root
+2026-02-22 15:27:50 0 [Note] InnoDB: Compressed tables use zlib 1.3.1
+2026-02-22 15:27:50 0 [Note] InnoDB: Number of transaction pools: 1
+2026-02-22 15:27:50 0 [Note] InnoDB: Using crc32 + pclmulqdq instructions
+2026-02-22 15:27:50 0 [Note] InnoDB: Using Linux native AIO
+2026-02-22 15:27:50 0 [Note] InnoDB: innodb_buffer_pool_size_max=64m, innodb_buffer_pool_size=64m
+2026-02-22 15:27:50 0 [Note] InnoDB: Completed initialization of buffer pool
+2026-02-22 15:27:50 0 [Note] InnoDB: File system buffers for log disabled (block size=4096 bytes)
+2026-02-22 15:27:50 0 [Note] InnoDB: End of log at LSN=46846
+2026-02-22 15:27:50 0 [Note] InnoDB: 128 rollback segments are active.
+2026-02-22 15:27:50 0 [Note] InnoDB: Setting file './ibtmp1' size to 12.000MiB. Physically writing the file full; Please wait ...
+2026-02-22 15:27:50 0 [Note] InnoDB: File './ibtmp1' size is now 12.000MiB.
+2026-02-22 15:27:50 0 [Note] InnoDB: log sequence number 46846; transaction id 14
+2026-02-22 15:27:50 0 [Note] Plugin 'FEEDBACK' is disabled.
+2026-02-22 15:27:50 0 [Note] InnoDB: Loading buffer pool(s) from /db1/myserver/mariadb/data/ib_buffer_pool
+2026-02-22 15:27:50 0 [Note] InnoDB: Buffer pool(s) load completed at 260222 15:27:50
+2026-02-22 15:27:50 0 [Note] Server socket created on IP: 'xxx.xxx.xxx.xxx', port: '3306'.
+2026-02-22 15:27:50 0 [Note] /db1/myserver/mariadb/mariadb_files/bin/mariadbd: ready for connections.
+Version: '10.11.14-MariaDB-log'  socket: '/db1/myserver/mariadb/run/mysql.sock'  port: 3306  MariaDB Server
+2026-02-22 15:28:03 4 [Warning] Access denied for user 'root'@'localhost' (using password: NO)
