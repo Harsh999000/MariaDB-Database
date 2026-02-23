@@ -1,18 +1,46 @@
 #!/bin/bash
+set -euo pipefail
 
-# === Setup Variables ===
-YESTERDAY=$(date +%F)
-LOG_SRC="/db1/myserver/mariadb/logs"
-DEST_DIR="/db1/github/mariadb/logs"
+SCRIPT_NAME="$(basename "$0")"
+CRONLOG_DIR="/db1/myserver/mariadb/cronlog"
+LOG_DATE="$(date +%F)"
+CRONLOG_FILE="$CRONLOG_DIR/mariadb-cronlog-$LOG_DATE.log"
+
+mkdir -p "$CRONLOG_DIR"
+
+log() {
+  {
+    echo "--------------------------------------------------"
+    echo "[ $(date '+%Y-%m-%d %H:%M:%S') ] [$SCRIPT_NAME]"
+    echo "$@"
+  } | tee -a "$CRONLOG_FILE"
+}
+
 REPO_DIR="/db1/github/mariadb"
+TODAY=$(date +%F)
 
-# === Copy and rename logs to flat logs/ folder ===
-cp "$LOG_SRC/startup-$YESTERDAY.log" "$DEST_DIR/" 2>/dev/null
-cp "$LOG_SRC/error.log" "$DEST_DIR/error-$YESTERDAY.log" 2>/dev/null
-cp "$LOG_SRC/general.log" "$DEST_DIR/general-$YESTERDAY.log" 2>/dev/null
+log "Starting MariaDB log push to main branch"
 
-# === Git commit and push ===
 cd "$REPO_DIR"
-git add logs/
-git commit -m "Daily log upload: $YESTERDAY"
+
+log "Fetching latest changes from origin"
+git fetch origin
+
+log "Rebasing onto origin/main"
+git rebase origin/main
+
+log "Force adding rotated logs"
+git add -f logs/*.log 2>/dev/null || true
+
+if git diff --cached --quiet; then
+  log "No new logs to commit."
+  exit 0
+fi
+
+log "Committing new log files"
+git commit -m "MariaDB log upload: $TODAY"
+
+log "Pushing to origin/main"
 git push origin main
+
+log "MariaDB log push completed successfully"
