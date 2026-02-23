@@ -1,5 +1,5 @@
 [client]
-port   = xxxx
+port   = 3306
 socket = /db1/myserver/mariadb/run/mysql.sock
 
 [mysqld]
@@ -16,8 +16,8 @@ tmpdir   = /db1/myserver/mariadb/tmp
 # =========================
 # NETWORKING
 # =========================
-bind-address = xxx.xxx.xxx.xxx
-port         = xxxx
+bind-address = 0.0.0.0
+port         = 3306
 
 # =========================
 # LOGGING
@@ -36,3 +36,10 @@ skip-log-bin
 # USER
 # =========================
 user = root
+
+# =========================
+# Limit To Save Memory
+# ==========================
+innodb_buffer_pool_size = 64M
+key_buffer_size = 16M
+max_connections = 30
