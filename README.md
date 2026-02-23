@@ -1,103 +1,107 @@
-# MariaDB Server Architecture
+# MariaDB Server Lifecycle System
 
-This document describes the automated operational lifecycle of the MariaDB server instance running on the server laptop.
+This repository documents the automated operational lifecycle of the MariaDB server instance running on the server laptop.
 
-The system is designed for deterministic daily execution, script-managed log rotation, and clean separation of responsibilities between the database engine and automation scripts.
-
----
-
-## Daily Automation Schedule
-
-All operations are executed sequentially starting at 12:01 A.M.
-
-MariaDB does not perform automatic date-based log rotation in this setup. Log rotation is handled explicitly by lifecycle scripts to ensure full control over archival, sanitization, retention, and Git synchronization.
+The system is designed for deterministic daily execution, script-managed log rotation, and controlled resource allocation within a multi-database environment.
 
 ---
 
-### 12:01 A.M – Backup Database  
-Script: backup-mariadb.sh  
+## Execution Schedule
 
-Purpose:  
-Creates a full logical backup of all MariaDB databases before any log manipulation occurs.  
-Ensures data safety and recovery capability prior to lifecycle maintenance operations.
+MariaDB lifecycle runs daily at 12:15 A.M.
 
----
+15 0 * * * /db1/myserver/mariadb/scripts/run-mariadb-lifecycle.sh
 
-### 12:02 A.M – Rotate Logs  
-Script: rotate-logs-mariadb.sh  
-
-Purpose:  
-Renames active log files (`error.log`, `general.log`, `slow.log`) to a date-based format:
-
-- error-YYYY-MM-DD.log  
-- general-YYYY-MM-DD.log  
-- slow-YYYY-MM-DD.log  
-
-Creates fresh active log files after rotation.  
-Copies rotated logs to the GitHub archival directory.
+Execution is sequential and halts on failure.
 
 ---
 
-### 12:03 A.M – Flush Logs  
-Script: flush-logs-mariadb.sh  
+## Nightly Lifecycle Sequence
 
-Purpose:  
-Forces MariaDB to reopen log file descriptors after rotation.  
-Prevents ghost file descriptor issues and ensures logging continuity.
+Each cycle performs:
 
----
+1. Database Backup
+2. Log Rotation
+3. Log Flush
+4. Log Sanitization
+5. Retention Cleanup
+6. Git Commit and Push
 
-### 12:04 A.M – Sanitize Logs  
-Script: sanitize-logs-mariadb.sh  
-
-Purpose:  
-Cleans rotated logs before archival.  
-Removes sensitive or unnecessary entries while preserving diagnostic value.
+This ensures recoverability, observability, and controlled archival.
 
 ---
 
-### 12:05 A.M – Delete Old Logs  
-Script: delete-logs-mariadb.sh  
+## Logging Strategy
 
-Purpose:  
-Applies retention policies:
+MariaDB does not perform automatic date-based rotation.
 
-- GitHub logs → 7 days  
-- Local MariaDB logs → 14 days  
-- Cron logs → 14 days  
+Lifecycle scripts explicitly:
 
-Ensures disk space stability and controlled archival lifecycle.
+- Rename active logs to date-stamped format
+- Recreate fresh active log files
+- Sanitize rotated logs
+- Copy logs to GitHub directory
+- Apply retention policies
+- Push sanitized logs to the remote repository
 
----
-
-### 12:06 A.M – Auto Push Logs  
-Script: auto-push-logs-mariadb.sh  
-
-Purpose:  
-Force-adds sanitized rotated logs to the Git repository.  
-Commits and pushes logs to GitHub for version-controlled archival.
+This provides full operational control over log lifecycle management.
 
 ---
 
-## Execution Characteristics
+## Resource Configuration
 
-- Single orchestrator script: `run-mariadb-lifecycle.sh`
-- Sequential execution (halts on failure)
-- Runs under user `harsh`
-- No systemd dependency
-- Fully isolated from MySQL installation
-- Deterministic, time-driven operational model
+MariaDB is tuned for shared lab infrastructure.
+
+Memory settings:
+
+- InnoDB Buffer Pool → 64M
+- Key Buffer → 16M
+- Max Connections → 30
+
+This prevents unnecessary allocation and preserves system headroom.
+
+Swap usage remains zero under normal operation.
 
 ---
 
-## Design Philosophy
+## Isolation Characteristics
+
+MariaDB runs independently from:
+
+- MySQL (port 3310)
+- PostgreSQL (port 5432)
+
+Isolation includes:
+
+- Dedicated port 3306
+- Dedicated socket file
+- Dedicated PID file
+- Dedicated data directory
+- Dedicated log directory
+
+No cross-engine process assumptions exist.
+
+---
+
+## Retention Policy
+
+- GitHub local logs → 7 days
+- Internal rotated logs → 14 days
+- Cron logs → 14 days
+- Active logs are never deleted
+
+The remote GitHub repository acts as an immutable historical archive.
+
+---
+
+## Architectural Intent
 
 The MariaDB lifecycle is intentionally:
 
-- Deterministic  
-- Script-controlled  
-- Log-centric  
-- Isolated from other database engines  
-- Designed for observability and auditability  
+- Deterministic
+- Script-controlled
+- Resource-governed
+- Isolated from other database engines
+- Designed for observability and auditability
 
-This architecture provides a controlled foundation for future enhancements such as replication, remote backups, monitoring integration, and production-grade hardening.
+This architecture provides a stable foundation for future enhancements such as replication testing, monitoring integration, remote backups, and production-grade hardening.
